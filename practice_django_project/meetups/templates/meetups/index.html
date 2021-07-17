@@ -6,13 +6,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'meetups/styles/base.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'meetups/styles/all-meetups.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'meetups/styles/meetup-details.css' %}"
+    />
     <title>All Meetups</title>
   </head>
   <body>
-    <h1>All Meetups</h1>
-    <p>Hello World!</p>
-    <p>
-      This is just a test to see if my template is being returned by Django...
-    </p>
+    <main>
+      <header id="main-header">
+        <nav><a href="/meetups">DjangoMeetups</a></nav>
+        <h1>Great meetups coming up soon!</h1>
+        <p>Find one to best suit your needs!</p>
+      </header>
+      <section>
+        {% for meetup_item in meetups %}
+        <li class="meetup-item">
+          <article>
+            <div class="meetup-summary">
+              <div class="meetup-image">
+                <img src="" alt="" />
+              </div>
+              <div class="meetup-details">
+                <h3>{{ meetup_item.title }}</h3>
+                <address>{{ meetup_item.location }}</address>
+              </div>
+            </div>
+            <div class="meetup-actions">
+              <a href="" class="btn">More Details</a>
+            </div>
+          </article>
+        </li>
+        {% endfor %}
+      </section>
+    </main>
   </body>
 </html>
